@@ -407,17 +407,21 @@ describe("the JavaScript language", function() {
       };
       obj.address = 'palm tree';
 
-      //expect(obj.address).toEqual();
-      //expect(obj['address']).toEqual();
-      //expect(obj['name']).toEqual();
+      expect(obj.address).toEqual('palm tree');
+      expect(obj['address']).toEqual(obj.address);
+      expect(obj['name']).toEqual(obj.name);
     });
 
     it("may define complex objects", function() {
-      var user;
+      var user = { 
+        address : { street: 'sesame' },
+        friends : [ {name:'triki'}]   
+ 
+    };
       // write the contents of the obj to make the satisfy the expectations:
 
-      //expect(user.address.street).toEqual('sesame');
-      //expect(user.friends[0].name).toEqual('triki');
+      expect(user.address.street).toEqual('sesame');
+      expect(user.friends[0].name).toEqual('triki');
     });
 
     it("has a pattern called, the Module Pattern", function() {
@@ -433,8 +437,8 @@ describe("the JavaScript language", function() {
       var obj = createObject();
       obj.addPoint();
 
-      //expect(obj.score()).toEqual();
-      //expect(typeof(obj.points)).toEqual();
+      expect(obj.score()).toEqual(1);
+      expect(typeof(obj.points)).toEqual('undefined');
     });
 
     it("may create objects also with the module pattern", function() {
@@ -653,7 +657,7 @@ describe("the JavaScript language", function() {
         cat.feed();
         cat.feed();
 
-        //expect(cat.kilos).toEqual();
+        // expect(cat.kilos).toEqual();
       });
 
       it("works different on dettached functions", function() {
@@ -662,14 +666,15 @@ describe("the JavaScript language", function() {
 
         feed();
 
-        //expect(window.kilos).toEqual();
-        //expect(cat.kilos).toEqual();
+        // expect(window.kilos).toEqual();
+        // expect(cat.kilos).toEqual();
       });
 
       it("can be bound explicitly with CALL and APPLY", function() {
         var feed = cat.feed;
         feed.apply(cat);
 
+        
         //expect(cat.kilos).toEqual();
       });
 
@@ -686,19 +691,22 @@ describe("the JavaScript language", function() {
         var otherCat = new Cat();
         otherCat.kilos = 10;
         otherCat.feed = cat.feed;
+        
 
         otherCat.feed();
-        //expect(otherCat.kilos).toEqual();
-        //expect(cat.kilos).toEqual();
+
+
+        // expect(otherCat.kilos).toEqual();
+        // expect(cat.kilos).toEqual();
       });
 
       it("can be handled using the SELF trick", function() {
         var energy = 200;
         var lion = new Lion(energy);
 
-        lion.hunt();
+        lion.hunt(lion.energy);
 
-        //expect(lion.energy).toEqual();
+        // expect(lion.energy).toEqual();
       });
 
       it("interprest the THIS when the function is executed", function() {
@@ -710,7 +718,7 @@ describe("the JavaScript language", function() {
         };
         lion.hunt();
 
-        //expect(lion.energy).toEqual();
+        // expect(lion.energy).toEqual();
       });
     });
   });
