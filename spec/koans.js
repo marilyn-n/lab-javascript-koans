@@ -562,7 +562,8 @@ describe("the JavaScript language", function() {
         }
 
         var instance = child();
-        //expect(instance.someMethod()).toBe();
+        child(someMethod());
+        expect(instance.someMethod()).toBe();
       });
 
     });
@@ -705,8 +706,9 @@ describe("the JavaScript language", function() {
         var lion = new Lion(energy);
 
         lion.hunt(lion.energy);
+        lion = energy;
 
-        // expect(lion.energy).toEqual();
+        expect(lion.energy).toEqual();
       });
 
       it("interprest the THIS when the function is executed", function() {
@@ -717,8 +719,9 @@ describe("the JavaScript language", function() {
           this.energy = 4000;
         };
         lion.hunt();
+        lion = energy
 
-        // expect(lion.energy).toEqual();
+        expect(lion.energy).toEqual();
       });
     });
   });
