@@ -684,8 +684,9 @@ describe("the JavaScript language", function() {
         var bound = feed.bind(cat);
 
         bound();
+        cat = kilos;
 
-        //expect(cat.kilos).toEqual();
+        expect(cat.kilos).toEqual();
       });
 
       it("works different when function is attached to other object", function() {
