@@ -657,8 +657,9 @@ describe("the JavaScript language", function() {
       it("sometimes works as expected in other languages", function() {
         cat.feed();
         cat.feed();
+        cat = kilos;
 
-        // expect(cat.kilos).toEqual();
+        expect(cat.kilos).toEqual();
       });
 
       it("works different on dettached functions", function() {
@@ -666,6 +667,7 @@ describe("the JavaScript language", function() {
         var feed = cat.feed;
 
         feed();
+        
 
         // expect(window.kilos).toEqual();
         // expect(cat.kilos).toEqual();
@@ -674,9 +676,10 @@ describe("the JavaScript language", function() {
       it("can be bound explicitly with CALL and APPLY", function() {
         var feed = cat.feed;
         feed.apply(cat);
+        cat = kilos;
 
         
-        //expect(cat.kilos).toEqual();
+        expect(cat.kilos).toEqual();
       });
 
       it("can be bound in modern browsers with BIND", function() {
@@ -694,12 +697,12 @@ describe("the JavaScript language", function() {
         otherCat.kilos = 10;
         otherCat.feed = cat.feed;
         
-
         otherCat.feed();
+        otherCat = kilos;
+        cat = kilos;
 
-
-        // expect(otherCat.kilos).toEqual();
-        // expect(cat.kilos).toEqual();
+        expect(otherCat.kilos).toEqual();
+        expect(cat.kilos).toEqual();
       });
 
       it("can be handled using the SELF trick", function() {
